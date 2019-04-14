@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3E474C"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity" >
+
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="#fff"
+        android:gravity="center_vertical">
+        
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_margin="10dp">
+            
+            <TextView 
+                android:text="管理员"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            
+            <EditText 
+                android:id="@+id/username"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"/>
+            
+        </LinearLayout>
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_margin="10dp">
+            
+             <TextView 
+                android:text="密码"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            
+            <EditText 
+                android:id="@+id/password"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_margin="10dp">
+            
+            <Button 
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="登录"/>
+            
+         </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>
