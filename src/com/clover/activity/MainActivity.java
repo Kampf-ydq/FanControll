@@ -129,17 +129,23 @@ public class MainActivity extends Activity {
     					InputStream in = conn.getInputStream();
     					
     					//将字符流转为字符串
-    					String data = StreamTool.decodeStream(in);
+    					String res = StreamTool.decodeStream(in);
     					
-    					//System.out.println(data);
+    					//System.out.println(res);
     					
     					//解析服务端回送的json格式的数据
-    					JSONObject jsonObject = new JSONObject(data);
+    					JSONObject jsonObject = new JSONObject(res);
     					
     					//判断回送的数据是否为空
+    					/*
+    					 * 服务器返回的数据格式: 
+    					 * 	成功：{"status":200,"msg":"OK","data":{"id":3,"username":"admin","password":"000000"}}
+    					 *  失败：{"status":200,"msg":"OK","data":null}
+    					 */
     					String result = jsonObject.getString("data");
     					
-    					if ("null".equals(result)) { //该管理员不存在
+    					//判断返回数据中的data部分是否为空
+    					if (result == null) { //该管理员不存在
     						
     						//返回数据为空
     						Message msg = Message.obtain();

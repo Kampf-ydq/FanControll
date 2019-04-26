@@ -11,11 +11,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public class ContentAdapter extends PagerAdapter {
+public class ViewPageAdapter extends PagerAdapter {
 
 	private List<View> views;
 	
-	public ContentAdapter(List<View> views) {
+	public ViewPageAdapter(List<View> views) {
 		super();
 		this.views = views;
 	}

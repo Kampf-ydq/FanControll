@@ -8,7 +8,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="我是三叶草联系人页"
+        android:text="联系人"
         android:textSize="30dp" />
+    <ListView 
+        android:id="@+id/lv_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+    </ListView>
 
 </LinearLayout>
