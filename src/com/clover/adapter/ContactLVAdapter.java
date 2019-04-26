@@ -2,7 +2,7 @@ package com.clover.adapter;
 
 import java.util.List;
 
-import com.clover.entity.FanParam;
+import com.clover.entity.Contact;
 import com.example.fancontroll.R;
 
 import android.content.Context;
@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class ContactLVAdapter extends ArrayAdapter<FanParam> {
+public class ContactLVAdapter extends ArrayAdapter<Contact> {
 	
 	private int item_page;
 	
-	public ContactLVAdapter(Context context, int resource, List<FanParam> objects) {
+	public ContactLVAdapter(Context context, int resource, List<Contact> objects) {
 		super(context, resource, objects);
 		item_page = resource;
 	}
@@ -30,7 +30,7 @@ public class ContactLVAdapter extends ArrayAdapter<FanParam> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		//获取当前FanParam实例
-		FanParam fanParam = getItem(position);
+		Contact contact = getItem(position);
 		View view;
 		ViewHolder viewHolder;
 		if(convertView == null){
@@ -46,7 +46,7 @@ public class ContactLVAdapter extends ArrayAdapter<FanParam> {
 			viewHolder = (ViewHolder) view.getTag();//重新获取ViewHolder
 		}
 		
-		viewHolder.contactName.setText(fanParam.getParamName());
+		viewHolder.contactName.setText(contact.getContactName());
 		return view;
 	}
 

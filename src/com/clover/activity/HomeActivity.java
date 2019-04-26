@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import com.clover.adapter.FanInforLVAdapter;
 import com.clover.adapter.ViewPageAdapter;
+import com.clover.entity.Contact;
 import com.clover.entity.FanParam;
 import com.example.fancontroll.R;
 import com.utils.StreamTool;
@@ -72,6 +73,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 	private List<View> views;
 	
 	private List<FanParam> fanParamList = new ArrayList<FanParam>();
+	private List<Contact> contactsList = new ArrayList<Contact>();
 	
 	/*
 	 * 子页面控件
@@ -79,6 +81,12 @@ public class HomeActivity extends Activity implements OnClickListener,
 	//page_01控件
 	private Spinner spinner;
 	private ListView lv_fan_param;
+	
+	/*
+	 * 子页面控件
+	 */
+	//page_02控件
+	private ListView lv_contact;
 	
 	private Handler mHandler = new Handler(){
 
@@ -157,6 +165,8 @@ public class HomeActivity extends Activity implements OnClickListener,
 		//初始化每个子页面的控件
 		spinner = (Spinner) page_01.findViewById(R.id.number_spinner);
 		lv_fan_param = (ListView) page_01.findViewById(R.id.lv_fan_param);
+		
+		lv_contact = (ListView) page_02.findViewById(R.id.lv_contact);
 		
 	}
 
