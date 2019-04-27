@@ -231,6 +231,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 			iv_contact.setImageResource(R.drawable.person_pressed);
 			tv_contact.setTextColor(Color.parseColor("#629540"));
 			getConInforFromSever();
+			contactsList.clear();
 			break;
 
 		case 2:
@@ -349,7 +350,6 @@ public class HomeActivity extends Activity implements OnClickListener,
 			iv_contact.setImageResource(R.drawable.person_pressed);
 			tv_contact.setTextColor(Color.parseColor("#629540"));
 			viewPager.setCurrentItem(1);
-			getConInforFromSever();
 			break;
 
 		case R.id.ll_more:
