@@ -7,9 +7,11 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.clover.adapter.ContactLVAdapter;
 import com.clover.adapter.FanInforLVAdapter;
 import com.clover.adapter.ViewPageAdapter;
 import com.clover.entity.Contact;
@@ -228,6 +230,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 		case 1:
 			iv_contact.setImageResource(R.drawable.person_pressed);
 			tv_contact.setTextColor(Color.parseColor("#629540"));
+			getConInforFromSever();
 			break;
 
 		case 2:
@@ -241,6 +244,95 @@ public class HomeActivity extends Activity implements OnClickListener,
 
 	}
 
+	private void getConInforFromSever() {
+		//向服务器获取联系人列表
+    	new Thread(){
+    		public void run() {
+    			
+    			//连接网络
+    	    	try {
+    	 
+        			String path = "http://10.0.2.2:8080/contact";
+        			
+    				URL url = new URL(path);
+    				
+    				//建立一个连接---Connection对象
+    				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    				
+    				//设置请求方式
+    				conn.setRequestMethod("GET");
+    				conn.setConnectTimeout(5000);
+    				
+    				//获得服务器返回的状态码，根据状态码判断访问是否成功
+    				int code = conn.getResponseCode();
+    				if (code == 200) { //成功处理请求
+    					
+    					InputStream in = conn.getInputStream();
+    					
+    					//将字符流转为字符串
+    					String res = StreamTool.decodeStream(in);
+    					
+    					//System.out.println(data);
+    					
+    					//解析服务端回送的json格式的数据
+    					JSONObject jsonObject = new JSONObject(res);
+    					
+    					//判断回送的数据是否为空
+    					String result = jsonObject.getString("data");
+    					
+    					if (result == null) { //判断是否有数据返回
+    						
+    						//返回数据为空
+    						Message msg = Message.obtain();
+							msg.what = NO_PARAM;
+							ConHandler.sendMessage(msg);
+							
+						}else {
+							
+							//取出联系人各项参数(json数组)
+							JSONArray jsonArray = jsonObject.getJSONArray("data");
+							
+							//通知更新ui
+							Message msg = Message.obtain();
+							msg.obj = jsonArray;
+							msg.what = SUCCESS;
+							ConHandler.sendMessage(msg);
+						}
+    				}
+    				
+    			} catch (Exception e) {
+    				
+    				e.printStackTrace();
+    				Message msg = Message.obtain();
+					msg.what = ERROR;
+					ConHandler.sendMessage(msg);
+    			}
+    		};
+    	}.start();
+	}
+
+	private Handler ConHandler = new Handler(){
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case SUCCESS:
+				initConInfor(msg.obj);
+				lv_contact.setAdapter(new ContactLVAdapter(HomeActivity.this, R.layout.contact_item, contactsList));
+				break;
+
+			case NO_PARAM:
+				Toast.makeText(HomeActivity.this, "服务器尚无该风机的参数信息", 0).show();
+				break;
+				
+			case ERROR:
+				Toast.makeText(HomeActivity.this, "网络出错", 0).show();
+				break;
+				
+			default:
+				break;
+			}
+		};
+	};
+	
 	@Override
 	public void onClick(View arg0) {
 		
@@ -257,6 +349,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 			iv_contact.setImageResource(R.drawable.person_pressed);
 			tv_contact.setTextColor(Color.parseColor("#629540"));
 			viewPager.setCurrentItem(1);
+			getConInforFromSever();
 			break;
 
 		case R.id.ll_more:
@@ -392,6 +485,25 @@ public class HomeActivity extends Activity implements OnClickListener,
 			fanParamList.add(dynamoTem);
 			
 		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+    }
+
+    private void initConInfor(Object conInfor){
+    	//返回json数组
+    	JSONArray jsonArray = (JSONArray) conInfor;
+    	
+    	//每一条联系人记录
+    	JSONObject item; 
+    	try {
+    		for (int i = 0; i < jsonArray.length(); i++) {
+    			item = (JSONObject) jsonArray.get(i);
+    			Contact contact = new Contact(item.getString("name"));
+    			contactsList.add(contact);
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
