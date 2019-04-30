@@ -81,9 +81,6 @@ public class HomeActivity extends Activity implements OnClickListener,
 	private Spinner spinner;
 	private ListView lv_fan_param;
 	
-	/*
-	 * 子页面控件
-	 */
 	//page_02控件
 	private ListView lv_contact;
 	
