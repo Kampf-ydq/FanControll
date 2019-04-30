@@ -1,6 +1,7 @@
 package com.clover.activity;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -17,7 +18,11 @@ import com.clover.adapter.ViewPageAdapter;
 import com.clover.entity.Contact;
 import com.clover.entity.FanParam;
 import com.example.fancontroll.R;
+import com.utils.AccessServer;
+import com.utils.JsonType;
+import com.utils.ParamType;
 import com.utils.StreamTool;
+import com.utils.URLPath;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -42,14 +47,6 @@ import android.widget.Toast;
 
 public class HomeActivity extends Activity implements OnClickListener,
 		OnPageChangeListener {
-
-	private final static String PATH = "http://10.0.2.2:8080/fan/";
-
-	protected static final int NO_PARAM = 0;
-
-	protected static final int SUCCESS = 1;
-
-	protected static final int ERROR = 2;
 	
 	// 底部3个LinearLayout
 	private LinearLayout ll_fan;
@@ -94,7 +91,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 
 			public void handleMessage(android.os.Message msg) {
 				switch (msg.what) {
-				case SUCCESS:
+				case ParamType.SUCCESS:
 					//显示风机各项参数
 					/*
 					 * 【扩展---MVC模式】
@@ -106,11 +103,11 @@ public class HomeActivity extends Activity implements OnClickListener,
 					lv_fan_param.setAdapter(new FanInforLVAdapter(HomeActivity.this,R.layout.param_item,fanParamList));
 					break;
 					
-				case NO_PARAM:
+				case ParamType.NO_PARAM:
 					Toast.makeText(HomeActivity.this, "服务器尚无该风机的参数信息", 0).show();
 					break;
 					
-				case ERROR:
+				case ParamType.ERROR:
 					Toast.makeText(HomeActivity.this, "网络出错", 0).show();
 					break;
 				default:
@@ -230,8 +227,11 @@ public class HomeActivity extends Activity implements OnClickListener,
 		case 1:
 			iv_contact.setImageResource(R.drawable.person_pressed);
 			tv_contact.setTextColor(Color.parseColor("#629540"));
-			getConInforFromSever();
+			
+			//访问服务器数据
+			AccessServer.getData(URLPath.CON_URL,ConHandler,JsonType.JsonArray);
 			contactsList.clear();
+			
 			break;
 
 		case 2:
@@ -245,86 +245,19 @@ public class HomeActivity extends Activity implements OnClickListener,
 
 	}
 
-	private void getConInforFromSever() {
-		//向服务器获取联系人列表
-    	new Thread(){
-    		public void run() {
-    			
-    			//连接网络
-    	    	try {
-    	 
-        			String path = "http://10.0.2.2:8080/contact";
-        			
-    				URL url = new URL(path);
-    				
-    				//建立一个连接---Connection对象
-    				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    				
-    				//设置请求方式
-    				conn.setRequestMethod("GET");
-    				conn.setConnectTimeout(5000);
-    				
-    				//获得服务器返回的状态码，根据状态码判断访问是否成功
-    				int code = conn.getResponseCode();
-    				if (code == 200) { //成功处理请求
-    					
-    					InputStream in = conn.getInputStream();
-    					
-    					//将字符流转为字符串
-    					String res = StreamTool.decodeStream(in);
-    					
-    					//System.out.println(data);
-    					
-    					//解析服务端回送的json格式的数据
-    					JSONObject jsonObject = new JSONObject(res);
-    					
-    					//判断回送的数据是否为空
-    					String result = jsonObject.getString("data");
-    					
-    					if (result == null) { //判断是否有数据返回
-    						
-    						//返回数据为空
-    						Message msg = Message.obtain();
-							msg.what = NO_PARAM;
-							ConHandler.sendMessage(msg);
-							
-						}else {
-							
-							//取出联系人各项参数(json数组)
-							JSONArray jsonArray = jsonObject.getJSONArray("data");
-							
-							//通知更新ui
-							Message msg = Message.obtain();
-							msg.obj = jsonArray;
-							msg.what = SUCCESS;
-							ConHandler.sendMessage(msg);
-						}
-    				}
-    				
-    			} catch (Exception e) {
-    				
-    				e.printStackTrace();
-    				Message msg = Message.obtain();
-					msg.what = ERROR;
-					ConHandler.sendMessage(msg);
-    			}
-    		};
-    	}.start();
-	}
-
 	private Handler ConHandler = new Handler(){
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case SUCCESS:
+			case ParamType.SUCCESS:
 				initConInfor(msg.obj);
 				lv_contact.setAdapter(new ContactLVAdapter(HomeActivity.this, R.layout.contact_item, contactsList));
 				break;
 
-			case NO_PARAM:
+			case ParamType.NO_PARAM:
 				Toast.makeText(HomeActivity.this, "服务器尚无该风机的参数信息", 0).show();
 				break;
 				
-			case ERROR:
+			case ParamType.ERROR:
 				Toast.makeText(HomeActivity.this, "网络出错", 0).show();
 				break;
 				
@@ -385,70 +318,17 @@ public class HomeActivity extends Activity implements OnClickListener,
 		}
     	
     	//向服务器获取风机参数
-    	new Thread(){
-    		public void run() {
-    			
-    			//连接网络
-    	    	try {
-    	    		//url编码传输
-        			String wholeUrl = PATH + URLEncoder.encode(fan_number, "UTF-8");
-        			
-        			//String testUrl = "https://www.baidu.com/s?wd=%E4%BB%8A%E6%97%A5%E6%96%B0%E9%B2%9C%E4%BA%8B&tn=SE_Pclogo_6ysd4c7a&sa=ire_dl_gh_logo&rsv_dl=igh_logo_pc";
-    				URL url = new URL(wholeUrl);
-    				
-    				//建立一个连接---Connection对象
-    				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    				
-    				//设置请求方式
-    				conn.setRequestMethod("GET");
-    				conn.setConnectTimeout(5000);
-    				
-    				//获得服务器返回的状态码，根据状态码判断访问是否成功
-    				int code = conn.getResponseCode();
-    				if (code == 200) { //成功处理请求
-    					
-    					InputStream in = conn.getInputStream();
-    					
-    					//将字符流转为字符串
-    					String res = StreamTool.decodeStream(in);
-    					
-    					//System.out.println(data);
-    					
-    					//解析服务端回送的json格式的数据
-    					JSONObject jsonObject = new JSONObject(res);
-    					
-    					//判断回送的数据是否为空
-    					String result = jsonObject.getString("data");
-    					
-    					if (result == null) { //判断是否有数据返回
-    						
-    						//返回数据为空
-    						Message msg = Message.obtain();
-							msg.what = NO_PARAM;
-							mHandler.sendMessage(msg);
-							
-						}else {
-							
-							//取出风机各项参数
-							JSONObject dataObj = jsonObject.getJSONObject("data");
-							
-							//通知更新ui
-							Message msg = Message.obtain();
-							msg.obj = dataObj;
-							msg.what = SUCCESS;
-							mHandler.sendMessage(msg);
-						}
-    				}
-    				
-    			} catch (Exception e) {
-    				
-    				e.printStackTrace();
-    				Message msg = Message.obtain();
-					msg.what = ERROR;
-					mHandler.sendMessage(msg);
-    			}
-    		};
-    	}.start();
+		String wholeUrl;
+		try {
+			wholeUrl = URLPath.FAN_URL + URLEncoder.encode(fan_number, "UTF-8");
+			AccessServer.getData(wholeUrl, mHandler,JsonType.JsonObject);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+ 
     }
 
     private void initFanInfor(Object fanParam){

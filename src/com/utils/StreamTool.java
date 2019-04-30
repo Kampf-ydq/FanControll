@@ -4,6 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/*
+ * 数据解析
+ */
 public class StreamTool {
 
 	public static String decodeStream(InputStream in) throws IOException {
