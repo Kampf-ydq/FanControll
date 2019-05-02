@@ -37,6 +37,7 @@ public class ContactLVAdapter extends ArrayAdapter<Contact> {
 			view = LayoutInflater.from(getContext()).inflate(item_page, null);//加载子项布局
 			viewHolder = new ViewHolder();
 			viewHolder.contactName = (TextView) view.findViewById(R.id.contact_name);
+			viewHolder.contactNumber = (TextView) view.findViewById(R.id.contact_number);
 			
 			//将ViewHolder存储在view中
 			view.setTag(viewHolder);
@@ -46,12 +47,14 @@ public class ContactLVAdapter extends ArrayAdapter<Contact> {
 			viewHolder = (ViewHolder) view.getTag();//重新获取ViewHolder
 		}
 		
+		viewHolder.contactNumber.setText(contact.getContactNumber());
 		viewHolder.contactName.setText(contact.getContactName());
 		return view;
 	}
 
 	//对控件的实例进行缓存
 	class ViewHolder{
+		TextView contactNumber;
 		TextView contactName;
 	}
 }

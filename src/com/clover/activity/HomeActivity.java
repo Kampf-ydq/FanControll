@@ -20,6 +20,7 @@ import com.utils.ParamType;
 import com.utils.URLPath;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -175,7 +177,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 		viewPager.setOnPageChangeListener(this);
 		
 		//每个子页面的事件监听
-		//风机编号选择事件监听
+		//【1】风机编号选择事件监听
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, 
@@ -193,6 +195,31 @@ public class HomeActivity extends Activity implements OnClickListener,
                 // Another interface callback
             }
         });
+		
+		//【2】联系人信息查看点击事件
+		lv_contact.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				//获取当前点击的联系人对象
+				Contact contact = contactsList.get(position);
+				
+				//利用Bundle传递数据
+				Bundle bundle = new Bundle();
+				bundle.putString("name", contact.getContactName());
+				bundle.putString("phone", contact.getContactPhone());
+				bundle.putString("email", contact.getContactEmail());
+				bundle.putString("room", contact.getContactRoom());
+				
+				//启动下一个活动
+				Intent intent = new Intent(HomeActivity.this, ContactInfor.class);
+				intent.putExtras(bundle);
+				
+				startActivity(intent);
+				
+			}
+		});
 	}
 
 	
@@ -373,7 +400,9 @@ public class HomeActivity extends Activity implements OnClickListener,
     	try {
     		for (int i = 0; i < jsonArray.length(); i++) {
     			item = (JSONObject) jsonArray.get(i);
-    			Contact contact = new Contact(item.getString("name"));
+    			Contact contact = new Contact(item.getString("name"),item.getString("number"),item.getString("phone"),
+    								  item.getString("email"),item.getString("room"));
+    			
     			contactsList.add(contact);
 			}
 			
