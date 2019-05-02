@@ -1,9 +1,5 @@
 package com.clover.activity;
 
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +17,6 @@ import com.example.fancontroll.R;
 import com.utils.AccessServer;
 import com.utils.JsonType;
 import com.utils.ParamType;
-import com.utils.StreamTool;
 import com.utils.URLPath;
 
 import android.app.Activity;
@@ -37,7 +32,6 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -45,6 +39,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+ * 应用主页Activity
+ */
 public class HomeActivity extends Activity implements OnClickListener,
 		OnPageChangeListener {
 	
@@ -178,6 +175,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 		viewPager.setOnPageChangeListener(this);
 		
 		//每个子页面的事件监听
+		//风机编号选择事件监听
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, 

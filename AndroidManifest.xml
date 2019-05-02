@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <!-- <activity android:name="com.clover.activity.HomeActivity"></activity> -->
+        <activity android:name="com.clover.activity.ContactInfor"></activity>
     </application>
 
 </manifest>

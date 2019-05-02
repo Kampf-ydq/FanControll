@@ -22,6 +22,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.app.Activity;
 
+/*
+ * 用户登录Activity
+ */
 public class MainActivity extends Activity {
 	
 	private EditText username;
