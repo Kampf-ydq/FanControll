@@ -25,6 +25,7 @@
         </activity>
         <!-- <activity android:name="com.clover.activity.HomeActivity"></activity> -->
         <activity android:name="com.clover.activity.ContactInfor"></activity>
+        <activity android:name="com.clover.activity.HistoryActivity"></activity>
     </application>
 
 </manifest>

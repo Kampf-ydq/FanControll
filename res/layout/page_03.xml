@@ -2,13 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#F6F6F6" >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="我是三叶草更多页"
+        android:text="更多页"
         android:textSize="30dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_history" 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="#fff">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="历史记录"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/ll_table" 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="#fff"
+        android:layout_marginTop="10dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="报表"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/ll_about" 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="#fff"
+        android:layout_marginTop="10dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于应用"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        
+    </LinearLayout>
 
 </LinearLayout>

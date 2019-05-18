@@ -83,6 +83,11 @@ public class HomeActivity extends Activity implements OnClickListener,
 	//page_02控件
 	private ListView lv_contact;
 	
+	//page_03控件
+	private LinearLayout ll_history;
+	private LinearLayout ll_table;
+	private LinearLayout ll_about;
+	
 	private Handler mHandler = new Handler(){
 
 			public void handleMessage(android.os.Message msg) {
@@ -163,6 +168,10 @@ public class HomeActivity extends Activity implements OnClickListener,
 		
 		lv_contact = (ListView) page_02.findViewById(R.id.lv_contact);
 		
+		ll_history = (LinearLayout) page_03.findViewById(R.id.ll_history);
+		ll_table = (LinearLayout) page_03.findViewById(R.id.ll_table);
+		ll_about = (LinearLayout) page_03.findViewById(R.id.ll_about);
+		
 	}
 
 	// 初始化底部按钮事件
@@ -220,8 +229,34 @@ public class HomeActivity extends Activity implements OnClickListener,
 				
 			}
 		});
+		
+		//【3】更多页菜单监听事件
+		ll_history.setOnClickListener(moreHomeListener);
 	}
 
+	OnClickListener moreHomeListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()) {
+			case R.id.ll_history:
+				Intent toHistory = new Intent();
+				toHistory.setClass(HomeActivity.this, HistoryActivity.class);
+				startActivity(toHistory);
+				break;
+			case R.id.ll_table:
+							
+				break;
+			case R.id.ll_about:
+				
+				break;
+
+			default:
+				break;
+			}
+			
+		}
+	};
 	
 	@Override
 	public void onPageScrollStateChanged(int arg0) {
@@ -259,6 +294,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 		case 2:
 			iv_more.setImageResource(R.drawable.more_pressed);
 			tv_more.setTextColor(Color.parseColor("#629540"));
+			
 			break;
 
 		default:
@@ -288,6 +324,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 			}
 		};
 	};
+	
 	
 	@Override
 	public void onClick(View arg0) {
@@ -411,4 +448,5 @@ public class HomeActivity extends Activity implements OnClickListener,
 			e.printStackTrace();
 		}
     }
+
 }
