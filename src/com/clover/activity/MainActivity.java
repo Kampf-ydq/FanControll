@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.app.Activity;
+import android.content.Intent;
 
 /*
  * 用户登录Activity
@@ -56,6 +57,9 @@ public class MainActivity extends Activity {
 					Toast.makeText(MainActivity.this, "欢迎来到三叶草", 0).show();
 					
 					//进入主页面
+					Intent toHomePage = new Intent(MainActivity.this, HomeActivity.class);
+					startActivity(toHomePage);
+					finish();
 					
 				}else { //密码错误
 					Toast.makeText(MainActivity.this, "密码错误", 0).show();

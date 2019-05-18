@@ -5,7 +5,10 @@ import com.utils.AccessServer;
 import com.utils.URLPath;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -36,6 +39,17 @@ public class ContactInfor extends Activity {
 		
 		//显示联系人详细信息
 		contactShow();
+		
+		//返回事件
+		back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent back = new Intent(ContactInfor.this,HomeActivity.class);
+				startActivity(back);
+				finish();
+			}
+		});
 	}
 	
 	private void contactShow() {

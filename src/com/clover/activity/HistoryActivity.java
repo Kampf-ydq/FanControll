@@ -1,8 +1,6 @@
 package com.clover.activity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.http.Header;
@@ -27,6 +25,9 @@ import android.os.Message;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/*
+ * 历史记录Activity
+ */
 public class HistoryActivity extends Activity {
 
 	private ListView lv_his;
