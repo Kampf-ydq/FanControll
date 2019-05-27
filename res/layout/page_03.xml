@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="更多页"
         android:textSize="30dp" />
 
     <LinearLayout
@@ -17,7 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:background="#fff">
+        android:background="#fff"
+        android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/history"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"/>
         
         <TextView 
             android:layout_width="wrap_content"
@@ -36,6 +43,13 @@
         android:background="#fff"
         android:layout_marginTop="10dp">
         
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/table"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"/>
+        
         <TextView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,6 +66,13 @@
         android:gravity="center_vertical"
         android:background="#fff"
         android:layout_marginTop="10dp">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"/>
         
         <TextView 
             android:layout_width="wrap_content"
