@@ -78,7 +78,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      */
     private List<T> arrayToList(T[] array) {
 
-        List<T> list = new ArrayList<>();
+        List<T> list = new ArrayList<T>();
 
         for (T set : array) {
             list.add(set);

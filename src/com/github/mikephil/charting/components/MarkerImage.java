@@ -1,5 +1,6 @@
 package com.github.mikephil.charting.components;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -42,7 +43,7 @@ public class MarkerImage implements IMarker {
      * @param context
      * @param drawableResourceId the drawable resource to render
      */
-    public MarkerImage(Context context, int drawableResourceId) {
+    @TargetApi(21) public MarkerImage(Context context, int drawableResourceId) {
         mContext = context;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -86,7 +87,7 @@ public class MarkerImage implements IMarker {
     }
 
     public void setChartView(Chart chart) {
-        mWeakChart = new WeakReference<>(chart);
+        mWeakChart = new WeakReference<Chart>(chart);
     }
 
     public Chart getChartView() {

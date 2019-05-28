@@ -85,7 +85,7 @@ public class LineChartRenderer extends LineRadarRenderer {
 
             if (width > 0 && height > 0) {
                 drawBitmap = Bitmap.createBitmap(width, height, mBitmapConfig);
-                mDrawBitmap = new WeakReference<>(drawBitmap);
+                mDrawBitmap = new WeakReference<Bitmap>(drawBitmap);
                 mBitmapCanvas = new Canvas(drawBitmap);
             } else
                 return;
@@ -604,7 +604,7 @@ public class LineChartRenderer extends LineRadarRenderer {
     /**
      * cache for the circle bitmaps of all datasets
      */
-    private HashMap<IDataSet, DataSetImageCache> mImageCaches = new HashMap<>();
+    private HashMap<IDataSet, DataSetImageCache> mImageCaches = new HashMap<IDataSet, DataSetImageCache>();
 
     /**
      * buffer for drawing the circles

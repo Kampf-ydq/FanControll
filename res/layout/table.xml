@@ -16,7 +16,27 @@
             android:layout_height="wrap_content"
             android:text="报表"/>
         
-    </LinearLayout>>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:text="选择: "/>
+        
+        <Spinner
+            android:id="@+id/number_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/number" />
+
+    </LinearLayout>
     
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/power_chart"

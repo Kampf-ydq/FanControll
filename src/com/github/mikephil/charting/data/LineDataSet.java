@@ -329,7 +329,7 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
 
         List<Integer> clrs = mCircleColors;
         if (clrs == null) {
-            clrs = new ArrayList<>();
+            clrs = new ArrayList<Integer>();
         }
         clrs.clear();
 

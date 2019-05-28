@@ -7,6 +7,7 @@ public interface URLPath {
 
 	//风机
 	String FAN_URL = "http://10.0.2.2:8080/fan/";
+	String REPORT_URL = "http://10.0.2.2:8080/report/";
 	
 	//联系人
 	String CON_URL = "http://10.0.2.2:8080/contact";

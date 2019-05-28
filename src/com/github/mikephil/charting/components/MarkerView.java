@@ -72,7 +72,7 @@ public class MarkerView extends RelativeLayout implements IMarker {
     }
 
     public void setChartView(Chart chart) {
-        mWeakChart = new WeakReference<>(chart);
+        mWeakChart = new WeakReference<Chart>(chart);
     }
 
     public Chart getChartView() {

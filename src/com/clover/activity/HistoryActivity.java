@@ -113,7 +113,7 @@ public class HistoryActivity extends Activity {
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					byte[] responseBody, Throwable error) {
-				Toast.makeText(HistoryActivity.this, "请坚持网络！", 0).show();
+				Toast.makeText(HistoryActivity.this, "请检查网络！", 0).show();
 			}
 		});
 	

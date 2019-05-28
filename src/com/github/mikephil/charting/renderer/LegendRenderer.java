@@ -73,7 +73,7 @@ public class LegendRenderer extends Renderer {
     }
 
 
-    protected List<LegendEntry> computedEntries = new ArrayList<>(16);
+    protected List<LegendEntry> computedEntries = new ArrayList<LegendEntry>(16);
 
     /**
      * Prepares the legend and calculates all needed forms, labels and colors.

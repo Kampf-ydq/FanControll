@@ -258,7 +258,7 @@ public class Legend extends ComponentBase {
      */
     public void setExtra(int[] colors, String[] labels) {
 
-        List<LegendEntry> entries = new ArrayList<>();
+        List<LegendEntry> entries = new ArrayList<LegendEntry>();
 
         for (int i = 0; i < Math.min(colors.length, labels.length); i++) {
             final LegendEntry entry = new LegendEntry();
@@ -626,9 +626,9 @@ public class Legend extends ComponentBase {
         mMaxSizePercent = maxSize;
     }
 
-    private List<FSize> mCalculatedLabelSizes = new ArrayList<>(16);
-    private List<Boolean> mCalculatedLabelBreakPoints = new ArrayList<>(16);
-    private List<FSize> mCalculatedLineSizes = new ArrayList<>(16);
+    private List<FSize> mCalculatedLabelSizes = new ArrayList<FSize>(16);
+    private List<Boolean> mCalculatedLabelBreakPoints = new ArrayList<Boolean>(16);
+    private List<FSize> mCalculatedLineSizes = new ArrayList<FSize>(16);
 
     public List<FSize> getCalculatedLabelSizes() {
         return mCalculatedLabelSizes;
