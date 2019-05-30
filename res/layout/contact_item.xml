@@ -8,19 +8,19 @@
     <TextView 
         android:id="@+id/contact_number"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="1001"/>
+        android:text="1001"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
     <TextView 
         android:id="@+id/contact_name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_weight="3"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="小米"/>
+        android:text="小米"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
 
 </LinearLayout>

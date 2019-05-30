@@ -81,27 +81,34 @@ public final class R {
         public static final int vp_content=0x7f09001e;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int contact_infor=0x7f030001;
-        public static final int contact_item=0x7f030002;
-        public static final int custom_marker_view=0x7f030003;
-        public static final int history_item=0x7f030004;
-        public static final int history_page=0x7f030005;
-        public static final int login=0x7f030006;
-        public static final int page_01=0x7f030007;
-        public static final int page_02=0x7f030008;
-        public static final int page_03=0x7f030009;
-        public static final int page_bottom=0x7f03000a;
-        public static final int page_main=0x7f03000b;
-        public static final int page_person=0x7f03000c;
-        public static final int page_top=0x7f03000d;
-        public static final int param_item=0x7f03000e;
-        public static final int table=0x7f03000f;
+        public static final int about=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int contact_infor=0x7f030002;
+        public static final int contact_item=0x7f030003;
+        public static final int custom_marker_view=0x7f030004;
+        public static final int history_item=0x7f030005;
+        public static final int history_page=0x7f030006;
+        public static final int login=0x7f030007;
+        public static final int page_01=0x7f030008;
+        public static final int page_02=0x7f030009;
+        public static final int page_03=0x7f03000a;
+        public static final int page_bottom=0x7f03000b;
+        public static final int page_main=0x7f03000c;
+        public static final int page_person=0x7f03000d;
+        public static final int page_top=0x7f03000e;
+        public static final int param_item=0x7f03000f;
+        public static final int table=0x7f030010;
     }
     public static final class menu {
         public static final int main=0x7f080000;
     }
     public static final class string {
+        public static final int about_agree_1=0x7f060004;
+        public static final int about_agree_2=0x7f060005;
+        public static final int about_copy_english=0x7f060007;
+        public static final int about_copy_right=0x7f060006;
+        public static final int about_function_intro=0x7f060008;
+        public static final int about_git=0x7f060003;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;

@@ -46,7 +46,6 @@ public class TableActivity extends Activity {
     private YAxis leftYAxis;            //左侧Y轴
     private YAxis rightYaxis;           //右侧Y轴
     private Legend legend;              //图例
-    private LimitLine limitLine;        //限制线
     
     private List<Report> list = new ArrayList<Report>(); //存储报表数据
     private Spinner spinner;
@@ -60,7 +59,7 @@ public class TableActivity extends Activity {
 				
 				initData(msg.obj);
 				//展示图表
-				showLineChart(list, chartDesc, Color.CYAN);
+				showLineChart(list, CHART_DESC, Color.CYAN);
 				
 				break;
 				

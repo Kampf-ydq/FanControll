@@ -231,32 +231,37 @@ public class HomeActivity extends Activity implements OnClickListener,
 		});
 		
 		//【3】更多页菜单监听事件
-		ll_history.setOnClickListener(moreHomeListener);
-	}
-
-	OnClickListener moreHomeListener = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			switch (v.getId()) {
-			case R.id.ll_history:
+		ll_history.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
 				Intent toHistory = new Intent();
 				toHistory.setClass(HomeActivity.this, HistoryActivity.class);
 				startActivity(toHistory);
-				break;
-			case R.id.ll_table:
-							
-				break;
-			case R.id.ll_about:
-				
-				break;
-
-			default:
-				break;
 			}
+		});
+		
+        ll_table.setOnClickListener(new OnClickListener() {
 			
-		}
-	};
+			@Override
+			public void onClick(View v) {
+				Intent toTable = new Intent();
+				toTable.setClass(HomeActivity.this, TableActivity.class);
+				startActivity(toTable);
+			}
+		});
+    
+       ll_about.setOnClickListener(new OnClickListener() {
+		
+			@Override
+			public void onClick(View v) {
+				Intent toAbout = new Intent();
+				toAbout.setClass(HomeActivity.this, AboutActivity.class);
+				startActivity(toAbout);
+			}
+		});
+	}
+
 	
 	@Override
 	public void onPageScrollStateChanged(int arg0) {
