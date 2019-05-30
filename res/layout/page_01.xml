@@ -10,18 +10,17 @@
         android:layout_weight="1"
         android:orientation="horizontal" >
 
-        <TextView 
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="编号: "/>
-        
+            android:text="编号: " />
+
         <Spinner
             android:id="@+id/number_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/number" />
-
     </LinearLayout>
 
     <ImageView
@@ -29,29 +28,30 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:src="@drawable/fan_icon" />
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:background="#333F50"
+        android:gravity="center"
         android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="状态"
             android:layout_marginRight="5dp"
-            android:textColor="#fff" />
-        
-        <ImageView 
+            android:text="状态"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/good_status"/>
+            android:src="@drawable/good_status" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -59,39 +59,40 @@
         android:layout_weight="6"
         android:orientation="vertical" >
 
-        <LinearLayout 
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
-            
+            android:gravity="center"
+            android:orientation="vertical" >
+
             <TextView
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="基本参数" />
-            
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="基本参数"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f6f6f6" />
         </LinearLayout>
-        
+
         <!-- 风机参数显示区 -->
-        <LinearLayout 
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:orientation="vertical">
-            
-            <ListView 
+            android:orientation="vertical" >
+
+            <ListView
                 android:id="@+id/lv_fan_param"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-                
+                android:layout_height="fill_parent" >
             </ListView>
-
-            
         </LinearLayout>
-        
     </LinearLayout>
-
-    
 
 </LinearLayout>

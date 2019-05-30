@@ -6,19 +6,27 @@
 
     <LinearLayout 
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
+            android:layout_height="90dp"
+            android:orientation="vertical"
             android:gravity="center"
-            android:background="#333F50">
+            android:background="#fff">
             
             <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="联系人" 
-	            android:textColor="#fff"
-	            android:textSize="20sp"/>
+	            android:text="点击联系人，即可查看详细信息！" 
+	            android:textSize="16sp"
+	            android:textColor="#3232CD"/>
             
-        </LinearLayout>
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="#f6f6f6"/>
+    
+
+    
     <ListView 
         android:id="@+id/lv_contact"
         android:layout_width="match_parent"

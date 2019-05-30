@@ -3,14 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F6F6F6" >
-
+    android:background="#fff" >
+    
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="30dp" />
+        android:textSize="45dp"/>
 
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f6f6f6"/>
+    
     <LinearLayout
         android:id="@+id/ll_history" 
         android:layout_width="match_parent"
@@ -34,6 +39,11 @@
             android:layout_marginLeft="10dp"/>
         
     </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#f6f6f6"/>
     
     <LinearLayout
         android:id="@+id/ll_table" 
@@ -59,6 +69,11 @@
         
     </LinearLayout>
     
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f6f6f6"/>
+    
     <LinearLayout
         android:id="@+id/ll_about" 
         android:layout_width="match_parent"
@@ -83,4 +98,9 @@
         
     </LinearLayout>
 
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f6f6f6"/>
+    
 </LinearLayout>
